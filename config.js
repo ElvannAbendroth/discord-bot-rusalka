@@ -1,20 +1,18 @@
 require('dotenv').config()
 
-console.log(process.env.NODE_ENV)
+const ENV = process.env.NODE_ENV
 
-const token =
+const TOKEN =
   process.env.NODE_ENV === 'developement'
-    ? process.env.test_token
-    : process.env.token
-const clientId =
+    ? process.env.TEST_TOKEN
+    : process.env.TOKEN
+const CLIENT_ID =
   process.env.NODE_ENV === 'developement'
     ? process.env.test_CLIENT_ID
-    : process.env.clientId
-
-const guildId = process.env.guildId
+    : process.env.CLIENT_ID
 
 module.exports = {
-  token,
-  clientId,
-  guildId,
+  ENV,
+  TOKEN,
+  CLIENT_ID,
 }

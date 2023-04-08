@@ -9,19 +9,31 @@ const data = new SlashCommandBuilder()
     subcommand
       .setName('song')
       .setDescription('Loads a single song from a url')
-      .addStringOption(option => option.setName('url').setDescription("the song's url").setRequired(true))
+      .addStringOption(option =>
+        option.setName('url').setDescription("the song's url").setRequired(true)
+      )
   )
   .addSubcommand(subcommand =>
     subcommand
       .setName('playlist')
       .setDescription('Loads a playlist of songs from a url')
-      .addStringOption(option => option.setName('url').setDescription("the playlist's url").setRequired(true))
+      .addStringOption(option =>
+        option
+          .setName('url')
+          .setDescription("the playlist's url")
+          .setRequired(true)
+      )
   )
   .addSubcommand(subcommand =>
     subcommand
       .setName('search')
       .setDescription('Searches for sogn based on provided keywords')
-      .addStringOption(option => option.setName('searchterms').setDescription('the search keywords').setRequired(true))
+      .addStringOption(option =>
+        option
+          .setName('searchterms')
+          .setDescription('the search keywords')
+          .setRequired(true)
+      )
   )
 
 function isValidURL(url) {
@@ -42,7 +54,8 @@ function queryType(url) {
 }
 
 const execute = async ({ client, interaction }) => {
-  if (!interaction.member.voice.channel) return interaction.reply('You need to be in a VC to use this command')
+  if (!interaction.member.voice.channel)
+    return interaction.reply('You need to be in a VC to use this command')
 
   const queue = await client.player.createQueue(interaction.guild)
   if (!queue.connection) await queue.connect(interaction.member.voice.channel)
@@ -69,7 +82,9 @@ const execute = async ({ client, interaction }) => {
       await queue.play()
     }
     const embed = new MessageEmbed()
-      .setDescription(`**[${song.title}](${song.url})** has been added to the Queue`)
+      .setDescription(
+        `**[${song.title}](${song.url})** has been added to the Queue`
+      )
       .setThumbnail(song.thumbnail)
       .setFooter({ text: `Duration: ${song.duration}` })
     await interaction.reply({
@@ -112,7 +127,9 @@ const execute = async ({ client, interaction }) => {
       await queue.play()
     }
     const embed = new MessageEmbed()
-      .setDescription(`**[${song.title}](${song.url})** has been added to the Queue`)
+      .setDescription(
+        `**[${song.title}](${song.url})** has been added to the Queue`
+      )
       .setThumbnail(song.thumbnail)
       .setFooter({ text: `Duration: ${song.duration}` })
     await interaction.reply({

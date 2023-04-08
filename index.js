@@ -6,9 +6,7 @@ const path = require('node:path')
 const { Client, Collection, GatewayIntentBits } = require('discord.js')
 const { Player } = require('discord-player')
 
-const { token } = config
-
-console.log(`Token from Index.js: ${token}`)
+const { TOKEN } = config
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates],
@@ -56,5 +54,5 @@ client.on('interactionCreate', async interaction => {
   }
 })
 
-// Login to Discord with your client's token
-client.login(token)
+// Login to Discord with your client's TOKEN
+client.login(TOKEN)
