@@ -4,7 +4,8 @@
   "description": "Hello, I'm Elvann's pedal harp!",
   "main": "index.js",
   "scripts": {
-    "start": "node deploy-commands.js && node .",
+    "start": "cross-env NODE_ENV=production node deploy-commands.js && node .",
+    "dev": "cross-env NODE_ENV=developement node deploy-commands.js && node .",
     "test": "test"
   },
   "keywords": [
@@ -19,6 +20,7 @@
     "@discordjs/opus": "^0.9.0",
     "@discordjs/rest": "^1.7.0",
     "@discordjs/voice": "^0.16.0",
+    "cross-env": "^7.0.3",
     "discord-api-types": "^0.37.37",
     "discord-player": "^6.1.1",
     "discord.js": "^14.9.0",

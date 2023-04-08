@@ -1,14 +1,16 @@
-require('dotenv').config()
+const config = require('./config')
 
 const fs = require('node:fs')
 const path = require('node:path')
 // Require the necessary discord.js classes
-const { Client, Collection, Intents } = require('discord.js')
+const { Client, Collection, GatewayIntentBits } = require('discord.js')
 const { Player } = require('discord-player')
 
-const { token } = process.env
+const { token } = config
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_VOICE_STATES] })
+const client = new Client({
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates],
+})
 client.commands = new Collection()
 client.player = new Player(client, {
   ytdlOptions: {
@@ -17,7 +19,9 @@ client.player = new Player(client, {
   },
 })
 const commandsPath = path.join(__dirname, 'commands')
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'))
+const commandFiles = fs
+  .readdirSync(commandsPath)
+  .filter(file => file.endsWith('.js'))
 
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file)
@@ -43,7 +47,10 @@ client.on('interactionCreate', async interaction => {
     await command.execute({ interaction, client })
   } catch (error) {
     console.error(error)
-    await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true })
+    await interaction.reply({
+      content: 'There was an error while executing this command!',
+      ephemeral: true,
+    })
   }
 })
 
