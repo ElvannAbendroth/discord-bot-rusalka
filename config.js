@@ -12,7 +12,7 @@ const CLIENT_ID =
     ? process.env.test_CLIENT_ID
     : process.env.CLIENT_ID
 
-const PORT = process.env.PORT || '8080'
+const PORT = process.env.PORT || 8080
 
 module.exports = {
   ENV,

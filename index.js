@@ -1,19 +1,8 @@
-// IMPORTS
 const { TOKEN, PORT } = require('./config')
 const app = require('./app')
-const api = require('./api')
-const client = require('./client')
+const bot = require('./bot')
 
-// DEPLOY COMMANDS -------------------------------------
+bot.login(TOKEN)
 
-api.deployCommands()
-
-// ORIGINAL INDEX -------------------------------------
-
-client.login(TOKEN)
-
-// EXPRESS SERVER -------------------------------------
-
-const listener = app.listen(PORT, function () {
-  console.log('Listening on port ' + listener.address().port)
-})
+app.listen(PORT)
+console.log(`Listening on port ${PORT}`)
