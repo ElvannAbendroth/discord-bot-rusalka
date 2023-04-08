@@ -8,6 +8,8 @@ const { Player } = require('discord-player')
 
 const { token } = config
 
+console.log(`Token from Index.js: ${token}`)
+
 const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates],
 })
@@ -33,7 +35,7 @@ for (const file of commandFiles) {
 
 // When the client is ready, run this code (only once)
 client.once('ready', () => {
-  console.log('Ready!')
+  console.log(`🤖 Logged in as ${client.user.tag}!`)
 })
 
 client.on('interactionCreate', async interaction => {

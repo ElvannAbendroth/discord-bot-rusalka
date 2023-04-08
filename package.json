@@ -4,8 +4,8 @@
   "description": "Hello, I'm Elvann's pedal harp!",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node deploy-commands.js && node .",
-    "dev": "cross-env NODE_ENV=developement node deploy-commands.js && node .",
+    "start": "cross-env NODE_ENV=production node deploy-commands.js && cross-env NODE_ENV=production node .",
+    "dev": "cross-env NODE_ENV=developement node deploy-commands.js && cross-env NODE_ENV=developement node .",
     "test": "test"
   },
   "keywords": [
