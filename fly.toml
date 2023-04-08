@@ -1,0 +1,4 @@
+# fly.toml file generated for discord-bot-rusalka on 2023-04-08T20:07:36+03:00
+
+app = "discord-bot-rusalka"
+primary_region = "ams"

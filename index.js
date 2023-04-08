@@ -1,7 +1,6 @@
 // IMPORTS
-const { TOKEN } = require('./config')
+const { TOKEN, PORT } = require('./config')
 const app = require('./app')
-const path = require('path')
 const api = require('./api')
 const client = require('./client')
 
@@ -11,11 +10,10 @@ api.deployCommands()
 
 // ORIGINAL INDEX -------------------------------------
 
-// Login to Discord with your client's TOKEN
 client.login(TOKEN)
 
 // EXPRESS SERVER -------------------------------------
 
-const listener = app.listen(8080, function () {
+const listener = app.listen(PORT, function () {
   console.log('Listening on port ' + listener.address().port)
 })
